@@ -1,16 +1,24 @@
-app.post("/pergunta", async (req, res) => {
+import express from "express";
+
+const app = express();
+app.use(express.json());
+
+// rota teste
+app.get("/", (req, res) => {
+  res.send("API rodando 🚀");
+});
+
+// rota pergunta
+app.post("/pergunta", (req, res) => {
   const pergunta = req.body.pergunta;
 
-  try {
-    const resposta = `Recebi sua pergunta: ${pergunta}`;
+  res.json({
+    resposta: `Recebi: ${pergunta}`
+  });
+});
 
-    res.json({
-      resposta
-    });
+const PORT = process.env.PORT || 3000;
 
-  } catch (erro) {
-    res.json({
-      resposta: "Erro ao processar"
-    });
-  }
+app.listen(PORT, () => {
+  console.log("Servidor rodando na porta " + PORT);
 });
