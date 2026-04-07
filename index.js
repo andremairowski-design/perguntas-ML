@@ -13,8 +13,8 @@ app.post("/pergunta", (req, res) => {
   const pergunta = req.body.pergunta;
 
   res.json({
-    resposta: `Recebi: ${pergunta}`
-  });
+  resposta: `Recebi: ${pergunta}`
+});
 });
 
 const PORT = process.env.PORT || 3000;
